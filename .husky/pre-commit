@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# Add any pre-commit hooks here if needed
+# For now, we'll leave this empty to avoid blocking commits

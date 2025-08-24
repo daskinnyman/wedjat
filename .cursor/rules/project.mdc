@@ -1,0 +1,56 @@
+---
+alwaysApply: true
+---
+
+# Wedjat
+
+This is a mono-repo project managed with pnpm.
+
+## Project Structure
+
+```
+wedjat/
+├── apps/
+│   ├── server/          # Backend sub-project
+│   │   ├── Tech Stack: Hono + Prisma + TypeScript
+│   │   └── Based on https://hono.dev/docs/
+│   └── extension/       # Chrome extension sub-project
+│       ├── Tech Stack: crxjs + TypeScript
+│       └── Based on https://crxjs.dev/guide/installation/create-crxjs
+├── packages/
+│   └── shared/          # Shared sub-project
+├── package.json
+├── pnpm-workspace.yaml
+└── README.md
+```
+
+## Tech Stack
+
+### Apps
+
+- **server**: Backend service using Hono framework, Prisma ORM, and TypeScript
+- **extension**: Chrome browser extension using crxjs and TypeScript
+
+### Packages
+
+- **shared**: Shared code and utility libraries
+
+## Development Environment Setup
+
+1. Ensure pnpm is installed
+2. Run `pnpm install` in the root directory to install all dependencies
+3. All sub-projects will automatically establish links
+
+## Workspace Configuration
+
+`pnpm-workspace.yaml` configuration:
+
+```yaml
+packages:
+  - "apps/*"
+  - "packages/*"
+```
+
+## Sub-project Development
+
+Each sub-project has its own `package.json` file and can independently manage dependencies and scripts. pnpm automatically handles dependency linking within the workspace.
