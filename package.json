@@ -9,8 +9,8 @@
     "commit": "git-cz",
     "start:extension": "pnpm --filter extension dev",
     "build:extension": "pnpm --filter extension build",
-    "start:server": "pnpm --filter hono dev",
-    "build:server": "pnpm --filter hono build"
+    "start:server": "pnpm --filter server dev",
+    "build:server": "pnpm --filter server build"
   },
   "keywords": [],
   "author": "",

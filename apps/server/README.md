@@ -1,28 +1,57 @@
-Prerequisites:
+# Server
 
-- [Vercel CLI](https://vercel.com/docs/cli) installed globally
+A Hono-based backend service for the Wedjat project.
 
-To develop locally:
+## Architecture
 
-```
-npm install
-vc dev
-```
+This server follows Hono's official best practices:
 
-```
-open http://localhost:3000
-```
+- **No controllers**: Business logic is directly in route handlers
+- **Modular routes**: Uses `app.route()` for code organization
+- **Type safety**: Full TypeScript support with proper type inference
+- **Validation**: Zod schemas for request validation
 
-To build locally:
+## Project Structure
 
 ```
-npm install
-vc build
+src/
+├── index.ts                    # Main entry point
+├── routes/                     # Route modules
+│   ├── health.ts              # Health check routes
+│   └── query.ts               # Query processing routes
+├── schemas/                    # Validation schemas
+│   └── query.schema.ts        # Query validation schema
+├── types/                      # Type definitions
+│   └── api.ts                 # API types
+└── middleware/                 # Middleware
+    └── cors.ts                # CORS configuration
 ```
 
-To deploy:
+## Development
 
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
 ```
-npm install
-vc deploy
-```
+
+## API Endpoints
+
+- `GET /` - Root endpoint
+- `GET /api/v1/health` - Health check
+- `POST /api/v1/query` - Process queries with validation
+
+## Technologies
+
+- Hono - Lightweight web framework
+- TypeScript - Type safety
+- Zod - Schema validation
+- Node.js - Runtime environment

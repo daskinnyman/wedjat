@@ -29,12 +29,21 @@ importers:
 
   apps/extension:
     dependencies:
+      '@tanstack/react-query':
+        specifier: ^5.85.5
+        version: 5.85.5(react@19.1.1)
+      '@tanstack/react-query-devtools':
+        specifier: ^5.85.5
+        version: 5.85.5(@tanstack/react-query@5.85.5(react@19.1.1))(react@19.1.1)
       react:
         specifier: ^19.1.0
         version: 19.1.1
       react-dom:
         specifier: ^19.1.0
         version: 19.1.1(react@19.1.1)
+      shared:
+        specifier: workspace:*
+        version: link:../../packages/shared
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: ^2.0.3
@@ -66,9 +75,24 @@ importers:
 
   apps/server:
     dependencies:
+      '@hono/node-server':
+        specifier: ^1.19.0
+        version: 1.19.0(hono@4.9.4)
+      '@hono/zod-validator':
+        specifier: ^0.7.2
+        version: 0.7.2(hono@4.9.4)(zod@4.1.1)
+      '@tanstack/react-query':
+        specifier: ^5.85.5
+        version: 5.85.5(react@19.1.1)
       hono:
         specifier: ^4.9.4
         version: 4.9.4
+      shared:
+        specifier: workspace:*
+        version: link:../../packages/shared
+      zod:
+        specifier: ^4.1.1
+        version: 4.1.1
     devDependencies:
       '@types/node':
         specifier: ^20.11.17
@@ -79,6 +103,12 @@ importers:
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
+
+  packages/shared:
+    dependencies:
+      zod:
+        specifier: ^4.1.1
+        version: 4.1.1
 
 packages:
 
@@ -397,6 +427,18 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@hono/node-server@1.19.0':
+    resolution: {integrity: sha512-1k8/8OHf5VIymJEcJyVksFpT+AQ5euY0VA5hUkCnlKpD4mr8FSbvXaHblxeTTEr90OaqWzAkQaqD80qHZQKxBA==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
+
+  '@hono/zod-validator@0.7.2':
+    resolution: {integrity: sha512-ub5eL/NeZ4eLZawu78JpW/J+dugDAYhwqUIdp9KYScI6PZECij4Hx4UsrthlEUutqDDhPwRI0MscUfNkvn/mqQ==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.25.0 || ^4.0.0
+
   '@hutson/parse-repository-url@3.0.2':
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
     engines: {node: '>=6.9.0'}
@@ -532,6 +574,23 @@ packages:
     resolution: {integrity: sha512-sq0hHLTgdtwOPDB5SJOuaoHyiP1qSwg+71TQWk8iDS04bW1wIE0oQ6otPiRj2ZvLYNASLMaTp8QRGUVZ+5OL5A==}
     cpu: [x64]
     os: [win32]
+
+  '@tanstack/query-core@5.85.5':
+    resolution: {integrity: sha512-KO0WTob4JEApv69iYp1eGvfMSUkgw//IpMnq+//cORBzXf0smyRwPLrUvEe5qtAEGjwZTXrjxg+oJNP/C00t6w==}
+
+  '@tanstack/query-devtools@5.84.0':
+    resolution: {integrity: sha512-fbF3n+z1rqhvd9EoGp5knHkv3p5B2Zml1yNRjh7sNXklngYI5RVIWUrUjZ1RIcEoscarUb0+bOvIs5x9dwzOXQ==}
+
+  '@tanstack/react-query-devtools@5.85.5':
+    resolution: {integrity: sha512-6Ol6Q+LxrCZlQR4NoI5181r+ptTwnlPG2t7H9Sp3klxTBhYGunONqcgBn2YKRPsaKiYM8pItpKMdMXMEINntMQ==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.85.5
+      react: ^18 || ^19
+
+  '@tanstack/react-query@5.85.5':
+    resolution: {integrity: sha512-/X4EFNcnPiSs8wM2v+b6DqS5mmGeuJQvxBglmDxl6ZQb5V26ouD2SJYAcC3VjbNwqhY2zjxVD15rDA5nGbMn3A==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2079,6 +2138,9 @@ packages:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
+  zod@4.1.1:
+    resolution: {integrity: sha512-SgMZK/h8Tigt9nnKkfJMvB/mKjiJXaX26xegP4sa+0wHIFVFWVlsQGdhklDmuargBD3Hsi3rsQRIzwJIhTPJHA==}
+
 snapshots:
 
   '@ampproject/remapping@2.3.0':
@@ -2407,6 +2469,15 @@ snapshots:
   '@esbuild/win32-x64@0.25.9':
     optional: true
 
+  '@hono/node-server@1.19.0(hono@4.9.4)':
+    dependencies:
+      hono: 4.9.4
+
+  '@hono/zod-validator@0.7.2(hono@4.9.4)(zod@4.1.1)':
+    dependencies:
+      hono: 4.9.4
+      zod: 4.1.1
+
   '@hutson/parse-repository-url@3.0.2': {}
 
   '@jridgewell/gen-mapping@0.3.13':
@@ -2501,6 +2572,21 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.48.0':
     optional: true
+
+  '@tanstack/query-core@5.85.5': {}
+
+  '@tanstack/query-devtools@5.84.0': {}
+
+  '@tanstack/react-query-devtools@5.85.5(@tanstack/react-query@5.85.5(react@19.1.1))(react@19.1.1)':
+    dependencies:
+      '@tanstack/query-devtools': 5.84.0
+      '@tanstack/react-query': 5.85.5(react@19.1.1)
+      react: 19.1.1
+
+  '@tanstack/react-query@5.85.5(react@19.1.1)':
+    dependencies:
+      '@tanstack/query-core': 5.85.5
+      react: 19.1.1
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -4071,3 +4157,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.2.1: {}
+
+  zod@4.1.1: {}

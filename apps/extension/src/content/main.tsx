@@ -1,14 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './views/App.tsx'
+import { getSelectionText, getCurrentPageUrl } from "./utils/selection.ts";
 
-console.log('[CRXJS] Hello world from content script!')
+const initializeMessageListener = (): void => {
+  chrome.runtime.onMessage.addListener((msg, _, sendResponse) => {
+    if (msg.type === "GET_SELECTION") {
+      sendResponse({
+        selectionText: getSelectionText(),
+        pageUrl: getCurrentPageUrl(),
+      });
+    }
+  });
+};
 
-const container = document.createElement('div')
-container.id = 'crxjs-app'
-document.body.appendChild(container)
-createRoot(container).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+console.log("[CRXJS] Hello world from content script!");
+
+initializeMessageListener();
