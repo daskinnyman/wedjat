@@ -9,13 +9,16 @@
   "dependencies": {
     "@hono/node-server": "^1.19.0",
     "@hono/zod-validator": "^0.7.2",
+    "@prisma/client": "^6.15.0",
     "@tanstack/react-query": "^5.85.5",
     "hono": "^4.9.4",
+    "openai": "^5.16.0",
     "shared": "workspace:*",
     "zod": "^4.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "prisma": "^6.15.0",
     "tsx": "^4.7.1",
     "typescript": "^5.8.3"
   }
